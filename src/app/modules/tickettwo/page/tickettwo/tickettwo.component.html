@@ -14,7 +14,8 @@
              [tableColumns]="columns"
              [tableLabels]="labels"
              (onEditRow)="editRow($event)"
-             (onDeleteRow)="deleteRow($event)">
+             (onDeleteRow)="deleteRow($event)"
+             (ChangeStatusClicked)="ChangeStatus($event)">
   </app-table>
 </div>
 <app-dialog [width]="'30vw'"

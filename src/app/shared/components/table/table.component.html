@@ -75,15 +75,15 @@
           <span> {{ data[columnName] }}</span>
         </ng-template>
          -->
-        <!-- <span *ngIf="columnName.includes('Time')">
+        <span *ngIf="columnName.includes('Time')">
 
           {{ data[columnName]|date:'shortTime' }}
         </span>
 
         <span *ngIf="!columnName.includes('date')">
 
-        </span> -->
-        {{ data[columnName] }}
+          {{ data[columnName] }}
+        </span>
 
       </td>
 

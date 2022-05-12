@@ -123,5 +123,8 @@ export class TickettwoComponent implements OnInit
     let ticketName = _.find(this.Ticket, function (o) { return o.Id == id; });
     return ticketName?.StatusNameEn;
   }
-
+  ChangeStatus(rowId: number)
+  {
+    console.log(rowId);
+  }
 }

@@ -20,6 +20,7 @@ export class TableComponent implements OnInit, OnChanges
   @Input() customButton: TemplateRef<any>;
   @Output() onEditRow = new EventEmitter();
   @Output() onDeleteRow = new EventEmitter();
+  @Output() ChangeStatusClicked = new EventEmitter();
   @Output() showRowDetails: EventEmitter<number> = new EventEmitter();
   id: string = this.tableColumns[0];
   constructor(private confirmationService: ConfirmationService, @Inject(DOCUMENT) private document: Document,
@@ -93,6 +94,7 @@ export class TableComponent implements OnInit, OnChanges
   changeStatus(id: number)
   {
     this.Menu.nativeElement.style.display = "none";
+    this.ChangeStatusClicked.emit(id);
   }
   openMenu(event: any)
   {
