@@ -1,0 +1,19 @@
+<form [formGroup]="addUser" (ngSubmit)="addData()">
+
+    <div class="mb-3">
+      <label>UserTypeName</label>
+      <input
+        type="text"
+        formControlName="UserTypeName"
+        class="form-control"
+        placeholder="title"
+      />
+    </div>
+    <div class="mb-3">
+      <label>UserTypeNameEn</label>
+      <input type="text" class="form-control" formControlName="UserTypeNameEn" />
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+  

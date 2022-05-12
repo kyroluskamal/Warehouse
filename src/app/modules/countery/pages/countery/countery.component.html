@@ -1,0 +1,35 @@
+
+<div class="text-right mb-3">
+    <button class="btn btn-primary" (click)="openAddDialog()">Add countery</button>
+  </div>
+
+  <div class="text-center" *ngIf="!isload">
+    <i class="fa-solid fa-spinner fa-2x fa-spin text-dar"></i>
+  </div>
+
+
+<div class="table_hidden_id" *ngIf="isload">
+    <app-table [tableData]="countery" [tableColumns]="columns" [tableLabels]="labels" (onEditRow)="editRow($event)" (onDeleteRow)="deleteRow($event)"></app-table>
+</div>
+<app-dialog [width]="'30vw'" [dialogPosition]="'center'" [closable]="true"  [dialogHeader]="(formType=='add')?'Add Countery':'Edit Countery'">
+
+    <app-addcountery *ngIf="formType=='add'" (onAddCountery)="getcountery()"></app-addcountery>
+    <app-editcountery [counterytId]="selectedId" *ngIf="formType=='edit'" (onEditCountery)="getcountery()"></app-editcountery>
+  </app-dialog>
+
+
+
+  <!-- <ng-template #deleteModel let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <p>Hello, World!</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+    </div>
+  </ng-template>
+  
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->

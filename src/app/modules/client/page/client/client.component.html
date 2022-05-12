@@ -1,0 +1,27 @@
+<div class="text-right mb-3">
+    <button class="btn btn-primary" (click)="openAddDialog()">Add </button>
+  </div>
+  <div class="text-center" *ngIf="!isload">
+    <i class="fa-solid fa-spinner fa-2x fa-spin text-dar"></i>
+  </div>
+  
+  <!-- Render table -->
+  <div class="table_hidden_id" *ngIf="isload">
+    <app-table [tableData]="clients" [tableColumns]="columns" [tableLabels]="labels" (onEditRow)="editRow($event)" (onDeleteRow)="deleteRow($event)" (showRowDetails)="onShowRowDetails($event)" ></app-table>
+  </div>
+  
+  
+  <app-dialog [width]="'50vw'" [dialogPosition]="'center'" [closable]="true"  [dialogHeader]="formType=='add'?'Add client': formType=='edit'?'Edit client':'Client Details'">
+  
+    <app-addclient *ngIf="formType=='add'" (onaddClient)="getClient()"></app-addclient>
+  
+  
+    <app-editclient [clientId]="selectedId" *ngIf="formType=='edit'" (onEditClient)="getClient()"></app-editclient>
+
+<app-client-details [clientId]="selectedId" *ngIf="formType==='showDetails'"></app-client-details>
+    
+
+    
+  </app-dialog>
+
+

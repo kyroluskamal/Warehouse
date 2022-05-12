@@ -1,0 +1,48 @@
+<form [formGroup]="addTeam" (ngSubmit)="addData()">
+
+    <div class="form-group">
+        <label for="ccmonth">Select work</label>
+
+        <select class="form-control" (change)="selectWork($event)" formControlName='WorkOrderId'>
+
+            <option *ngFor="let work of works" [value]="work.Id">{{work.StatusNameEn}}</option>
+        </select>
+    </div>
+    <div *ngIf=" addTeam.get('WorkOrderId')?.errors != null && addTeam.get('WorkOrderId')?.touched">
+        <p class="text-danger" *ngIf="addTeam.get('WorkOrderId')?.errors?.['required']">
+            work must be required
+        </p>
+    </div>
+
+
+    <div class="form-group">
+        <label for="ccmonth">Select project</label>
+
+        <select class="form-control" (change)="selecProject($event)" formControlName='ProjectId'>
+
+            <option *ngFor="let project of projects" [value]="project.Id">{{project.ProjectNameEn}}</option>
+        </select>
+    </div>
+    <div *ngIf=" addTeam.get('ProjectId')?.errors != null && addTeam.get('ProjectId')?.touched">
+        <p class="text-danger" *ngIf="addTeam.get('ProjectId')?.errors?.['required']">
+            project must be required
+        </p>
+    </div>
+
+
+    <div class="form-group">
+        <label for="ccmonth">Select Employee</label>
+
+        <select class="form-control" (change)="selecEmployee($event)" formControlName='EmployeeId'>
+
+            <option *ngFor="let emplyee of emplyees" [value]="emplyee.Id">{{emplyee.EmpName}}</option>
+        </select>
+    </div>
+    <div *ngIf=" addTeam.get('EmployeeId')?.errors != null && addTeam.get('EmployeeId')?.touched">
+        <p class="text-danger" *ngIf="addTeam.get('EmployeeId')?.errors?.['required']">
+            Employee must be required
+        </p>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>

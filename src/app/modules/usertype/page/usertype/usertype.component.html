@@ -1,0 +1,18 @@
+<div class="text-right mb-3">
+  <button class="btn btn-primary" (click)="openAddDialog()">new</button>
+</div>
+
+<div class="text-center" *ngIf="!isload">
+  <i class="fa-solid fa-spinner fa-2x fa-spin text-dar"></i>
+</div>
+
+<div class="table_hidden_id"  *ngIf="isload">
+      <app-table [tableData]="users" [tableColumns]="columns" [tableLabels]="labels" (onEditRow)="editRow($event)"
+          (onDeleteRow)="deleteRow($event)"></app-table>
+</div>
+<app-dialog [width]="'30vw'" [dialogPosition]="'center'" [closable]="true"
+  [dialogHeader]="(formType=='add')?'Add User':'Edit User'">
+
+  <app-addusertype *ngIf="formType=='add'" (onAddUser)="getUser()"></app-addusertype>
+  <app-editusertype [userId]="selectedId" *ngIf="formType=='edit'" (onEditUser)="getUser()"></app-editusertype>
+</app-dialog>

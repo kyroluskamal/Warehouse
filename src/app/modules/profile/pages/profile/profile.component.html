@@ -1,0 +1,206 @@
+<form
+  [formGroup]="profileForm"
+  (ngSubmit)="submit()"
+  class="form-horizontal row"
+>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header"><strong>Profile info</strong></div>
+      <div class="card-body">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="text-input"
+            >Username</label
+          >
+          <div class="col-md-9">
+            <input
+              type="text"
+              id="text-input"
+              name="text-input"
+              class="form-control"
+              placeholder="Text"
+              formControlName="UserName"
+            />
+            <span
+              class="help-block text-danger"
+              *ngIf="
+                profileForm.get('UserName')?.invalid &&
+                profileForm.get('UserName')?.errors &&
+                (profileForm.get('UserName')?.dirty ||
+                  profileForm.get('UserName')?.touched)
+              "
+            >
+              <span
+                *ngIf="addBriefForm.controls['UserName']?.errors?.['required']"
+                >Please enter your username</span
+              >
+            </span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="text-input"
+            >Mobile</label
+          >
+          <div class="col-md-9">
+            <input
+              type="text"
+              id="text-input"
+              name="text-input"
+              class="form-control"
+              placeholder="Text"
+              formControlName="Mobile"
+            />
+            <span
+              class="help-block text-danger"
+              *ngIf="
+                profileForm.get('Mobile')?.invalid &&
+                profileForm.get('Mobile')?.errors &&
+                (profileForm.get('Mobile')?.dirty ||
+                  profileForm.get('Mobile')?.touched)
+              "
+            >
+              <span
+                *ngIf="addBriefForm.controls['Mobile']?.errors?.['required']"
+                >Please enter your mobile</span
+              >
+            </span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="email-input"
+            >Email Input</label
+          >
+          <div class="col-md-9">
+            <input
+              type="email"
+              id="email-input"
+              name="email-input"
+              class="form-control"
+              placeholder="Enter Email"
+              formControlName="Email"
+            />
+            <span
+              class="help-block text-danger"
+              *ngIf="
+                profileForm.get('Email')?.invalid &&
+                profileForm.get('Email')?.errors &&
+                (profileForm.get('Email')?.dirty ||
+                  profileForm.get('Email')?.touched)
+              "
+            >
+              <span *ngIf="addBriefForm.controls['Email']?.errors?.['required']"
+                >Please enter your email</span
+              >
+            </span>
+          </div>
+        </div>
+        <!-- <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="password-input"
+            >Password</label
+          >
+          <div class="col-md-9">
+            <input
+              type="password"
+              id="password-input"
+              name="password-input"
+              class="form-control"
+              placeholder="Password"
+              autocomplete="current-password"
+              formControlName="Password"
+            />
+            <span
+              class="help-block text-danger"
+              *ngIf="
+                profileForm.get('Password')?.invalid &&
+                profileForm.get('Password')?.errors &&
+                (profileForm.get('Password')?.dirty ||
+                  profileForm.get('Password')?.touched)
+              "
+            >
+              <span
+                *ngIf="addBriefForm.controls['Password']?.errors?.['required']"
+                >Please enter your password</span
+              >
+            </span>
+          </div>
+        </div> -->
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="select1"
+            >Select city</label
+          >
+          <div class="col-md-9">
+            <select id="select1" formControlName="CityId" class="form-control" (change)="getSelectedCityId($event)">
+              <option *ngFor="let city of cities" [value]="city.CountryId">
+                {{ city.CityNameAR }}
+              </option>
+            </select>
+            <span
+              class="help-block text-danger"
+              *ngIf="
+                profileForm.get('CityId')?.invalid &&
+                profileForm.get('CityId')?.errors &&
+                (profileForm.get('CityId')?.dirty ||
+                  profileForm.get('CityId')?.touched)
+              "
+            >
+              <span
+                *ngIf="addBriefForm.controls['CityId']?.errors?.['required']"
+                >Please enter your city</span
+              >
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="profileForm.invalid"
+        >
+          <i class="fa fa-dot-circle-o"></i> Submit
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <input
+          type="file"
+          #profileImg
+          class="d-none"
+          (change)="readURL($event)"
+          formControlName="PhotoUrl"
+          value="this throws an error"
+        />
+        <div
+          *ngIf="
+            profileForm.get('PhotoUrl')?.invalid &&
+            profileForm.get('PhotoUrl')?.errors &&
+            (profileForm.get('PhotoUrl')?.dirty ||
+              profileForm.get('PhotoUrl')?.touched)
+          "
+        >
+          <div
+            id="imageHelp"
+            class="form-text text-danger mb-4 text-center"
+            *ngIf="profileForm.controls['PhotoUrl']?.errors?.['required']"
+          >
+            image is required
+          </div>
+        </div>
+        <div class="upload-img" (click)="profileImg.click()">
+          <ng-container *ngIf="imageSrc; else noImg">
+            <img [src]="imageSrc" alt="" class="img-profile" />
+          </ng-container>
+
+          <ng-template #noImg>
+            <img src="" alt="" class="img-fluid profile-img">
+
+          </ng-template>
+        </div>
+        <h2 class="text-capitalize text-center my-3">{{user?.UserName}}</h2>
+          <button class="btn btn-block btn-outline-danger" type="button" (click)="deleteUser(user?.Id)">Delete account</button>
+      </div>
+    </div>
+  </div>
+</form>

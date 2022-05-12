@@ -1,0 +1,22 @@
+<form [formGroup]="addmainService" (ngSubmit)="addData()">
+
+    <div class="form-group">
+      <label for="ccmonth">Select typeservice</label>
+      <select class="form-control" (change)="selectServices($event)" formControlName='ServiceTypeId'>
+        <option *ngIf="services?.length>0"> Select Services</option>
+        <option *ngIf="services?.length ==0"> No Data</option>
+  
+        <option *ngFor="let service of services" [value]="service.Id">{{service.ServiceTypeNameAr}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label>MainServiceNameAr</label>
+      <input type="text" formControlName="MainServiceNameAr" class="form-control" placeholder="title" />
+    </div>
+    <div class="mb-3">
+      <label>MainServiceNameEn</label>
+      <input type="text" class="form-control" formControlName="MainServiceNameEn" />
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>

@@ -1,0 +1,110 @@
+<p-table [responsiveLayout]="'scroll'" #dt [value]="tableData" [dataKey]="tableColumns" [rows]="10"
+  [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" styleClass="p-datatable-gridlines"
+  [paginator]="true" currentPageReportTemplate="عرض {first} من {last} الي {totalRecords} عنصر"
+  [globalFilterFields]="tableColumns">
+  <ng-template pTemplate="caption">
+    <div class="p-d-flex">
+      <span class="p-input-icon-left p-ml-auto">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" (input)="dt.filterGlobal($any($event).target.value, 'contains')" placeholder="بحث"
+          class="w-100" />
+      </span>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header">
+    <!-- Columns Name -->
+    <tr>
+      <th [pSortableColumn]="columnLabel" *ngFor="let columnLabel of tableLabels" style="font-size: 13px;">
+        <div *ngIf="columnLabel == 'الرقم'; else idTemplate" >
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </div>
+        <ng-template #idTemplate>
+          <div class="p-d-flex p-jc-between p-ai-center text-center">
+            {{ columnLabel }}
+            <p-sortIcon [field]="columnLabel" ></p-sortIcon>
+          </div>
+        </ng-template>
+      </th>
+      <th></th>
+    </tr>
+    <!-- ./Columns Name -->
+    <!-- Columns Filter -->
+    <tr>
+      <!-- <th *ngFor="let columnName of tableColumns">
+        <div *ngIf="columnName.indexOf('Id') == -1">
+          <p-columnFilter type="text" [field]="columnName"></p-columnFilter>
+        </div>
+      </th> -->
+      <th></th>
+    </tr>
+    <!-- ./Columns Filter -->
+  </ng-template>
+
+  <ng-template pTemplate="body" let-data>
+    <tr [pSelectableRow]="data" (click)="showDetails(data?.Id)">
+
+
+      <td class="text-center"  *ngFor="let columnName of tableColumns">
+        
+        <!-- <ng-container *ngIf="columnName=='CountryId';else default;">
+          <select class="form-control"  [(ngModel)]="data[columnName]" disabled>
+  
+            <option *ngFor="let country of Countries" [value]="country.Id">{{country.CountryNameEn}}</option>
+          </select>
+          
+
+        </ng-container>
+        
+        <ng-template #default>
+          <span> {{ data[columnName] }}</span>
+        </ng-template>
+         -->
+         <span *ngIf="columnName.includes('Time')">
+
+         {{ data[columnName]|date:'shortTime' }}
+        </span>
+         
+         <span *ngIf="!columnName.includes('date')" >
+
+         {{ data[columnName] }}
+        </span>
+         
+      </td>
+
+<!-- التاريييييخ -->
+      
+ <!-- <td>{{data.UserTypeId}}</td>
+ <td>{{data.UserName}}</td>
+ <td>{{data.Mobile}}</td>
+ <td>{{data.Email}}</td>
+ <td>{{data.PhotoUrl}}</td>
+ <td>{{data.CityName}}</td>
+ <td>{{data.CreateDate | date:'dd/MM/yyyy, h:mm a'}}</td> -->
+
+
+      <td class="text-center">
+        <p-toast position="top-center" key="tc"></p-toast>
+        <p-confirmPopup></p-confirmPopup>
+        <button pButton pRipple type="button" icon="pi pi-pencil"
+          class="p-button-rounded p-button-text p-button-plain p-button-info"
+          (click)="editRow(data[tableColumns[0]],$event)"></button>
+        <button pButton pRipple type="button" icon="pi pi-trash"
+          class="p-button-rounded p-button-text p-button-plain p-button-danger"
+          (click)="deleteRow(data[tableColumns[0]],$event) "></button>
+          <ng-container *ngTemplateOutlet="customButton"></ng-container>
+      </td>
+    </tr>
+  </ng-template>
+  
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td class="text-center" colspan="7">لا يوجد بيانات.</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+
+
+
+

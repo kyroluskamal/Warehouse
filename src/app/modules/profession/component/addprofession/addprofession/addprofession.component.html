@@ -1,0 +1,13 @@
+<form [formGroup]="addProfession" (ngSubmit)="addData()">
+
+    <div class="mb-3">
+        <label>Profession name arabic</label>
+        <input type="text" formControlName="ProfessionNameAr" class="form-control" placeholder="title" />
+    </div>
+    <div class="mb-3">
+        <label>Profession name english</label>
+        <input type="text" formControlName="ProfessionNameEn" class="form-control" placeholder="title" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>

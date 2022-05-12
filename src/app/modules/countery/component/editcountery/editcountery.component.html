@@ -1,0 +1,13 @@
+<form [formGroup]="editCountery" (ngSubmit)="editData()">
+
+  <div class="mb-3">
+    <label>countery name arabic</label>
+    <input type="text" formControlName="CountryNameAr" class="form-control" placeholder="title"  [(ngModel)]='itemdetails.CountryNameAr'/>
+  </div>
+  <div class="mb-3">
+    <label>countery name english</label>
+    <input type="text" formControlName="CountryNameEn" class="form-control" placeholder="title"  [(ngModel)]='itemdetails.CountryNameEn'/>
+  </div>
+
+  <button type="submit" class="btn btn-primary">edit countery</button>
+</form>

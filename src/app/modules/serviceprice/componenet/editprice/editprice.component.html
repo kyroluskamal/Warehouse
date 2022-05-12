@@ -1,0 +1,31 @@
+<form [formGroup]="editPrice" (ngSubmit)="editData()">
+
+    <div class="form-group">
+        <label for="ccmonth">Select sub service</label>
+        <select class="form-control" (change)="selectSubService($event)" formControlName='SubServiceId'>
+
+            <option *ngFor="let service of services" [value]="service.Id">{{service.SubServiceNameAr}}</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>DescriptionAr</label>
+        <input type="text" formControlName="DescriptionAr" class="form-control" placeholder="title" />
+    </div>
+
+    <div class="mb-3">
+        <label>DescriptionEn</label>
+        <input type="text" formControlName="DescriptionEn" class="form-control" placeholder="title" />
+    </div>
+
+    <div class="mb-3">
+        <label>Price</label>
+        <input type="number" formControlName="Price" class="form-control" placeholder="title" />
+    </div>
+
+    <div class="mb-3">
+        <label>cost</label>
+        <input type="number" formControlName="Cost" class="form-control" placeholder="title" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add price list</button>
+</form>

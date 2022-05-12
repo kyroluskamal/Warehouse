@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "workorder.component.scss"
+    ],
+    "names": [],
+    "file": "workorder.component.css"
+}

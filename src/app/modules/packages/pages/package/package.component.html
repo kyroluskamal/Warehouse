@@ -1,0 +1,16 @@
+<div class="text-right mb-3">
+  <button class="btn btn-primary" (click)="openAddDialog()">Add</button>
+</div>
+
+<div class="text-center" *ngIf="!isload">
+  <i class="fa-solid fa-spinner fa-2x fa-spin text-dar"></i>
+</div>
+<div class="table_hidden_id" *ngIf="isload">
+  <app-table [tableData]="packages" [tableColumns]="columns" [tableLabels]="labels" (onEditRow)="editRow($event)" (onDeleteRow)="deleteRow($event)"></app-table>
+</div>
+<app-dialog [width]="'30vw'" [dialogPosition]="'center'" [closable]="true"  [dialogHeader]="(formType=='add')?'Add packages':'Edit packages'">
+
+  <app-addpackage *ngIf="formType=='add'" (onaddPackages)="getPackage()"></app-addpackage> 
+
+  <app-editpackage [packageId]="selectedId" *ngIf="formType=='edit'" (onEditpackages)="getPackage()"></app-editpackage>
+</app-dialog>

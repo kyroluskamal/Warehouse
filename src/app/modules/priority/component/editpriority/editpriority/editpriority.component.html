@@ -1,0 +1,13 @@
+<form [formGroup]="editpriority" (ngSubmit)="editData()">
+
+    <div class="mb-3">
+        <label>PriorityNameAr</label>
+        <input type="text" formControlName="PriorityNameAr" class="form-control" placeholder="title" />
+    </div>
+    <div class="mb-3">
+        <label>PriorityNameEn</label>
+        <input type="text" formControlName="PriorityNameEn" class="form-control" placeholder="title" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">edit </button>
+</form>

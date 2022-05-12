@@ -1,0 +1,27 @@
+<form [formGroup]="editProjects" (ngSubmit)="editData()">
+
+
+    <div class="mb-3">
+        <label>Project Name Arabic</label>
+        <input type="text" formControlName="ProjectNameAr" class="form-control" placeholder="title" />
+    </div>
+
+    <div *ngIf=" editProjects.get('ProjectNameAr')?.errors != null && editProjects.get('ProjectNameAr')?.touched">
+        <p class="text-danger" *ngIf="editProjects.get('ProjectNameAr')?.errors?.['required']">
+            Project Name Arabic must be required
+        </p>
+      </div>
+
+    <div class="mb-3">
+        <label>Project Name English</label>
+        <input type="text" formControlName="ProjectNameEn" class="form-control" placeholder="title" />
+    </div>
+    <div *ngIf=" editProjects.get('ProjectNameEn')?.errors != null && editProjects.get('ProjectNameEn')?.touched">
+        <p class="text-danger" *ngIf="editProjects.get('ProjectNameEn')?.errors?.['required']">
+            Project Name English must be required
+        </p>
+      </div>
+
+
+    <button type="submit" class="btn btn-primary">edit</button>
+</form>

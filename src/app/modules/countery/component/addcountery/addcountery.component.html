@@ -1,0 +1,13 @@
+<form [formGroup]="addCountery" (ngSubmit)="addData()">
+
+  <div class="mb-3">
+    <label>countery name arabic</label>
+    <input type="text" formControlName="CountryNameAr" class="form-control" placeholder="title" />
+  </div>
+  <div class="mb-3">
+    <label>countery name english</label>
+    <input type="text" formControlName="CountryNameEn" class="form-control" placeholder="title" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Add countery</button>
+</form>

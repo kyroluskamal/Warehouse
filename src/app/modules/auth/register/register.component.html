@@ -1,0 +1,204 @@
+<!-- <!-- <div class="position-absolute w-75 top-50 start-50 translate-middle">
+        <form [formGroup]="Formregister" (ngSubmit)="submiteregister(Formregister)" class="text-capitalize">
+
+            <div class="image text-center">
+                <img src="assets/image/1-01.png" alt="">
+            </div>
+            <label>user name</label>
+            <input [class.is-valid]="Formregister.get('UserName')?.errors == null &&
+            Formregister.get('UserName')?.touched" type="text" class="form-control mb-2" formControlName="UserName">
+            <div class="alert alert-danger" *ngIf="Formregister.get('UserName')?.errors != null && Formregister.get('UserName')?.touched">
+                <p *ngIf="Formregister.get('UserName')?.errors?.['required']">firstname must be required</p>
+                <p *ngIf="Formregister.get('UserName')?.errors?.['minlength']">firstname must be minlength 5</p>
+                <p *ngIf="Formregister.get('UserName')?.errors?.['maxlength']">firstname must be maxlength 15</p>
+            </div>
+
+            <label>password</label>
+            <input type="password" class="form-control mb-2" formControlName="password" [class.is-valid]="Formregister.get('password')?.errors == null &&
+            Formregister.get('password')?.touched">
+            <div class="alert alert-danger"  *ngIf="Formregister.get('password')?.errors !=null &&Formregister.get('password')?.touched">
+                <p *ngIf="Formregister.get('password')?.errors?.['required']">password must be required</p>
+                <p *ngIf="Formregister.get('password')?.errors?.['minlength']">password must be minlength 5</p>
+                <p *ngIf="Formregister.get('password')?.errors?.['maxlength']">password must be maxlength 15</p>
+            </div>
+
+
+            <label>mobile</label>
+            <input type="text" class="form-control mb-3" formControlName="Mobile" [class.is-valid]="Formregister.get('Mobile')?.errors == null &&
+            Formregister.get('password')?.touched">
+            <div class="alert alert-danger"  *ngIf="Formregister.get('Mobile')?.errors !=null &&Formregister.get('Mobile')?.touched">
+                <p *ngIf="Formregister.get('Mobile')?.errors?.['required']">Mobile must be required</p>
+            </div>
+
+
+            <label>email</label>
+            <input type="text" class="form-control mb-2" formControlName="email" [class.is-valid]="Formregister.get('email')?.errors == null &&
+            Formregister.get('email')?.touched">
+            <div class="alert alert-danger"  *ngIf="Formregister.get('email')?.errors !=null &&Formregister.get('email')?.touched">
+                <p *ngIf="Formregister.get('email')?.errors?.['required']">email must be required</p>
+                <p *ngIf="Formregister.get('email')?.errors?.['patern']">email must be minlength 5</p>
+                <p *ngIf="Formregister.get('email')?.errors?.['maxlength']">email must be maxlength 15</p>
+            </div>
+
+            <label>date</label>
+            <input type="date" class="form-control mb-2" formControlName="CreateDate" [class.is-valid]="Formregister.get('CreateDate')?.errors == null &&
+            Formregister.get('CreateDate')?.touched">
+            <div class="alert alert-danger"  *ngIf="Formregister.get('CreateDate')?.errors !=null &&Formregister.get('CreateDate')?.touched">
+                <p *ngIf="Formregister.get('CreateDate')?.errors?.['required']">date must be required</p>
+            </div>
+
+            <label>countery</label>
+
+            <select class="form-control" formControlName="CityName"
+                 [class.is-valid]="Formregister.get('CityName')?.errors == null &&Formregister.get('CityName')?.touched"
+                (change)="changeCity($event)">
+
+                <option *ngFor="let item of city" [ngValue]="item.CityNameAR">{{item.CityNameAR}}</option>
+            </select>
+            <div class="alert alert-danger" *ngIf="Formregister.get('CityName')?.errors !=null &&Formregister.get('CityName')?.touched">
+                <p *ngIf="Formregister.get('CityName')?.errors?.['required']">CityName must be required</p>
+            </div>
+
+            <label>photo</label>
+            <img [src]="url" class="m-2">
+            <input type="file" class="form-control" formControlName="PhotoUrl" (change)="onselectfile($event)"  [class.is-valid]="Formregister.get('PhotoUrl')?.errors == null &&Formregister.get('PhotoUrl')?.touched">
+            <div class="alert alert-danger" *ngIf="Formregister.get('PhotoUrl')?.errors !=null &&Formregister.get('PhotoUrl')?.touched">
+                <p *ngIf="Formregister.get('PhotoUrl')?.errors?.['required']">photo must be required</p>
+            </div>
+
+            <button class="btn btn-primary mt-3 mb-3" [disabled]="Formregister.invalid"> submite</button>
+
+            <p>i have already account <a routerLink="/auth/login"> login</a></p>
+        </form>
+    </div> -->
+
+<div class="register">
+  <div class="app-body">
+    <main class="main d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="card mx-4">
+              <div class="card-body p-4">
+                <form [formGroup]="Formregister" (ngSubmit)="submiteregister(Formregister)">
+                  <h1>Register</h1>
+                  <p class="text-muted">Create your account</p>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Username" formControlName="UserName" />
+                  </div>
+                  <div *ngIf="
+                      Formregister.get('UserName')?.errors != null &&
+                      Formregister.get('UserName')?.touched
+                    ">
+                    <p class="text-danger" *ngIf="Formregister.get('UserName')?.errors?.['required']">
+                      firstname must be required
+                    </p>
+                    <p class="text-danger" *ngIf="Formregister.get('UserName')?.errors?.['minlength']">
+                      firstname must be minlength 5
+                    </p>
+                    <p class="text-danger" *ngIf="Formregister.get('UserName')?.errors?.['maxlength']">
+                      firstname must be maxlength 15
+                    </p>
+                  </div>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">@</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Email" formControlName="Email" />
+                  </div>
+                  <div *ngIf="
+                      Formregister.get('email')?.errors != null &&
+                      Formregister.get('email')?.touched
+                    ">
+                    <p class="text-danger" *ngIf="Formregister.get('email')?.errors?.['required']">
+                      email must be required
+                    </p>
+                    <p class="text-danger" *ngIf="Formregister.get('email')?.errors?.['patern']">
+                      email must be minlength 5
+                    </p>
+                    <p class="text-danger" *ngIf="Formregister.get('email')?.errors?.['maxlength']">
+                      email must be maxlength 15
+                    </p>
+                  </div>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                    <input type="password" class="form-control" placeholder="Password" formControlName="Password" />
+                  </div>
+                  <div *ngIf="
+                      Formregister.get('password')?.errors != null &&
+                      Formregister.get('password')?.touched
+                    ">
+                    <p class="text-danger" *ngIf="Formregister.get('password')?.errors?.['required']">
+                      password must be required
+                    </p>
+                    <p class="text-danger" *ngIf="Formregister.get('password')?.errors?.['minlength']">
+                      password must be minlength 5
+                    </p>
+                    <p class="text-danger" *ngIf="Formregister.get('password')?.errors?.['maxlength']">
+                      password must be maxlength 15
+                    </p>
+                  </div>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-phone"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Mobile" formControlName="Mobile" />
+                  </div>
+                  <div *ngIf="
+                      Formregister.get('Mobile')?.errors != null &&
+                      Formregister.get('Mobile')?.touched
+                    ">
+                    <p class="text-danger" *ngIf="Formregister.get('Mobile')?.errors?.['required']">
+                      Mobile must be required
+                    </p>
+                  </div>
+                  <div *ngIf="error?.indexOf('Mobile')">
+                    <p class="text-danger">{{error}}</p>
+                  </div>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-map"></i></span>
+                    </div>
+                    <select class="form-control" formControlName="CityId" [class.is-valid]="
+                        Formregister.get('CityId')?.errors == null &&
+                        Formregister.get('CityId')?.touched
+                      " (change)="getSelectedCityId($event)">
+                      <option *ngFor="let city of cities" [value]="city.Id">
+                        {{ city.CityNameAR }}
+                      </option>
+                    </select>
+                  </div>
+                  <div *ngIf="
+                      Formregister.get('Mobile')?.errors != null &&
+                      Formregister.get('Mobile')?.touched
+                    ">
+                    <p class="text-danger" *ngIf="Formregister.get('Mobile')?.errors?.['required']">
+                      Mobile must be required
+                    </p>
+                  </div>
+                  <div class="form-group">
+                    
+                    <select class="form-control" (change)="selectUser($event)" formControlName='UserTypeId'>
+                      <option *ngIf="users?.length>0"> Select user</option>
+                      <option *ngIf="users?.length ==0"> No Data</option>
+                
+                      <option *ngFor="let user of users" [value]="user.Id">{{user.UserTypeNameEn}}</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-block btn-success" [disabled]="Formregister.invalid">
+                    Create Account
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<form [formGroup]="addProjects" (ngSubmit)="addData()">
+    <div class="mb-3">
+        <label>Project Name Arabic</label>
+        <input type="text" formControlName="ProjectNameAr" class="form-control" placeholder="title" />
+    </div>
+
+    <div *ngIf=" addProjects.get('ProjectNameAr')?.errors != null && addProjects.get('ProjectNameAr')?.touched">
+        <p class="text-danger" *ngIf="addProjects.get('ProjectNameAr')?.errors?.['required']">
+            Project Name Arabic must be required
+        </p>
+      </div>
+
+    <div class="mb-3">
+        <label>Project Name English</label>
+        <input type="text" formControlName="ProjectNameEn" class="form-control" placeholder="title" />
+    </div>
+    <div *ngIf=" addProjects.get('ProjectNameEn')?.errors != null && addProjects.get('ProjectNameEn')?.touched">
+        <p class="text-danger" *ngIf="addProjects.get('ProjectNameEn')?.errors?.['required']">
+            Project Name English must be required
+        </p>
+      </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>

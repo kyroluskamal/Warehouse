@@ -1,0 +1,28 @@
+<form [formGroup]="editAssignee" (ngSubmit)="editData()">
+
+
+    <div class="form-group">
+      <label for="ccmonth">Select Employee</label>
+  
+      <select class="form-control" (change)="selecEmployee($event)" formControlName='EmployeeId'>
+  
+        <option *ngFor="let emplyee of emplyees" [value]="emplyee.Id">{{emplyee.EmpName}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label>Employee Name</label>
+      <input type="text" formControlName="EmployeeName" class="form-control" placeholder="title" />
+    </div>
+  
+    <div class="form-group">
+      <label for="ccmonth">Select work</label>
+  
+      <select class="form-control" (change)="selectWork($event)" formControlName='WorkOrderId'>
+  
+        <option *ngFor="let work of works" [value]="work.Id">{{work.StatusNameEn}}</option>
+      </select>
+    </div>
+  
+    <button type="submit" class="btn btn-primary">edit </button>
+  </form>
+

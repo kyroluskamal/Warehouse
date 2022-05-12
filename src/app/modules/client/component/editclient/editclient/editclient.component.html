@@ -1,0 +1,97 @@
+<form [formGroup]="editUser" (ngSubmit)="editData()">
+
+  <div class="form-group">
+    <label for="ccmonth">Select user</label>
+    <select class="form-control" (change)="selectClient($event)" formControlName='UserTypeId'>
+
+      <option *ngFor="let user of users" [value]="user.Id">{{user.UserTypeNameEn}}</option>
+    </select>
+  </div>
+
+  <div *ngIf=" editUser.get('UserTypeId')?.errors != null && editUser.get('UserTypeId')?.touched">
+    <p class="text-danger" *ngIf="editUser.get('UserTypeId')?.errors?.['required']">
+      Ware House Name Ar must be required
+    </p>
+  </div>
+
+  <div class="form-group">
+    <label for="ccmonth">Select city</label>
+    <select class="form-control" formControlName="CityId" (change)="getSelectedCityId($event)">
+      <option *ngFor="let city of cities" [value]="city.Id">
+        {{ city.CityNameAR }}
+      </option>
+    </select>
+  </div>
+
+  <div *ngIf=" editUser.get('CityId')?.errors != null && editUser.get('CityId')?.touched">
+    <p class="text-danger" *ngIf="editUser.get('CityId')?.errors?.['required']">
+      Ware House Name Ar must be required
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <label>UserName</label>
+    <input type="text" formControlName="UserName" class="form-control" placeholder="title" />
+  </div>
+
+  <div *ngIf=" editUser.get('UserName')?.errors != null && editUser.get('UserName')?.touched">
+    <p class="text-danger" *ngIf="editUser.get('UserName')?.errors?.['required']">
+      Ware House Name Ar must be required
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <label>Mobile</label>
+    <input type="text" formControlName="Mobile" class="form-control" placeholder="title" />
+  </div>
+
+  <div *ngIf=" editUser.get('Mobile')?.errors != null && editUser.get('Mobile')?.touched">
+    <p class="text-danger" *ngIf="editUser.get('Mobile')?.errors?.['required']">
+      Ware House Name Ar must be required
+    </p>
+  </div>
+  <div class="mb-3">
+    <label>Email</label>
+    <input type="text" formControlName="Email" class="form-control" placeholder="title" />
+  </div>
+
+  <div *ngIf=" editUser.get('Email')?.errors != null && editUser.get('Email')?.touched">
+    <p class="text-danger" *ngIf="editUser.get('Email')?.errors?.['required']">
+      Ware House Name Ar must be required
+    </p>
+  </div>
+  <div class="mb-3">
+    <label>photo</label>
+    <img [src]="url" class="m-2">
+    <input type="file" class="form-control" formControlName="PhotoUrl" (change)="onselectfile($event)">
+  </div>
+
+  <div *ngIf=" editUser.get('PhotoUrl')?.errors != null && editUser.get('PhotoUrl')?.touched">
+    <p class="text-danger" *ngIf="editUser.get('PhotoUrl')?.errors?.['required']">
+      Ware House Name Ar must be required
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <label>date</label>
+    <input type="date" formControlName="CreateDate" class="form-control" placeholder="title" />
+  </div>
+
+  <div *ngIf=" editUser.get('CreateDate')?.errors != null && editUser.get('CreateDate')?.touched">
+    <p class="text-danger" *ngIf="editUser.get('CreateDate')?.errors?.['required']">
+      Ware House Name Ar must be required
+    </p>
+  </div>
+    <!-- <div class="mb-3">
+      <label>ConfirmPayment</label>
+      <input type="text" formControlName="ConfirmPayment" class="form-control" placeholder="title" />
+    </div>
+  
+    <div class="mb-3">
+      <label>IsBlock</label>
+      <input type="text" formControlName="IsBlock" class="form-control" placeholder="title" />
+    </div> -->
+  
+  
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>

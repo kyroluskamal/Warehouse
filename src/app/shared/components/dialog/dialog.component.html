@@ -1,0 +1,19 @@
+<p-dialog
+  [(visible)]="display"
+  (onHide)="hideModal()"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+  [style]="{ width: width }"
+  [modal]="true"
+  [rtl]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [position]="dialogPosition"
+  [closable]="closable"
+  [showHeader]="closable"
+>
+  <ng-template pTemplate="header">
+    <h2 class="font-weight-bold mb-0" [class]="dialogHeaderClass">{{ dialogHeader }}<p [class]="dialogDescriptionClass">{{dialogDescription}}</p></h2>
+
+  </ng-template>
+  <ng-content></ng-content>
+</p-dialog>

@@ -1,0 +1,104 @@
+// Here you can add other styles
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,500&family=Libre+Bodoni:ital,wght@1,400;1,500&family=Montserrat:wght@200;300&family=Open+Sans:ital,wght@0,400;0,500;1,400&family=Tajawal:wght@400;500;700&display=swap');
+
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+.login,.register,.change-password {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+table
+{
+  font-family: 'Open Sans', sans-serif;
+  text-transform: capitalize;
+
+}
+
+.p-datatable .p-datatable-thead > tr > th
+{
+  background: #6c7ae0;
+  border: none;
+  color: white;
+}
+.p-datatable .p-datatable-tbody > tr:hover
+{
+  background-color: #ececff;
+    cursor: pointer;
+}
+.p-datatable .p-datatable-tbody > tr:nth-child(even)
+{
+  background-color: #f5f5f5;
+}
+.p-datatable .p-sortable-column .p-sortable-column-icon
+{
+  color: white;
+}
+.p-datatable.p-datatable-gridlines .p-datatable-tbody > tr > td {
+  border-width: 0px;
+}
+
+.cursor-pointer{
+  cursor: pointer !important;
+}
+.profile-img,.img-profile{
+  display: block;
+  width: 200px !important;
+  height: 200px !important;
+  border-radius: 50%;
+  border: 10px solid #eee;
+  margin:0 auto;
+}
+.p-datatable .p-datatable-tbody > tr > td
+{
+  padding:0px 0.5rem
+}
+
+.table_hidden_id .p-datatable-wrapper table .p-datatable-thead tr:nth-child(1) th:nth-child(1),
+.table_hidden_id .p-datatable-wrapper table .p-datatable-thead tr:nth-child(2) th:nth-child(1),
+.table_hidden_id .p-datatable-wrapper table .p-datatable-tbody tr td:nth-child(1){
+  display:none;
+}
+
+.pi-sort-alt:before
+{
+  font-size:13px;
+  font-weight: 600;
+}
+.p-datatable.p-datatable-gridlines .p-datatable-tbody > tr > td
+{
+  font-weight: 600;
+}
+.p-datatable .p-datatable-thead > tr > th
+{
+  padding: 0.5rem;
+}
+
+
+.xng-breadcrumb-root{
+    padding: 8px 16px;
+    display: inline;
+    border-radius: 0;
+}
+
+label.xng-breadcrumb-trail{
+    margin-bottom: 0;
+    color: orange;
+}
+
+.xng-breadcrumb-separator{
+    padding: 0 0;
+}
+
+a {
+    color: #e95420;
+    text-decoration: none;
+}
+
+.p-dropdown-label.p-inputtext
+{
+  padding:0;
+  font-size:1rem;
+}
