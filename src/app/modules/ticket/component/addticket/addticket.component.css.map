@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "addticket.component.scss"
+    ],
+    "names": [],
+    "file": "addticket.component.css"
+}

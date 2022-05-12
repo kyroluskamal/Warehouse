@@ -1,0 +1,14 @@
+<form [formGroup]="addServiceType" (ngSubmit)="addData()">
+
+
+  <div class="mb-3">
+    <label>ServiceTypeNameAr</label>
+    <input type="text" formControlName="ServiceTypeNameAr" class="form-control" placeholder="title" />
+  </div>
+  <div class="mb-3">
+    <label>ServiceTypeNameEN</label>
+    <input type="text" class="form-control" formControlName="ServiceTypeNameEn" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>

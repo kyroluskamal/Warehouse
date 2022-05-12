@@ -1,0 +1,30 @@
+<form [formGroup]="editServiceType" (ngSubmit)="editData()">
+
+  <!-- <div class="form-group">
+    <label for="ccmonth">Select Country</label>
+    <select class="form-control" (change)="selectServices$event)" formControlName='CountryId'>
+      <option *ngIf="Countries?.length>0"> Select Country</option>
+      <option *ngIf="Countries?.length ==0"> No Data</option>
+
+      <option *ngFor="let country of Countries" [value]="country.Id">{{country.CountryNameEn}}</option>
+    </select>
+  </div> -->
+
+    <div class="mb-3">
+      <label>ServiceTypeNameAr</label>
+      <input
+        type="text"
+        formControlName="ServiceTypeNameAr"
+        class="form-control"
+        placeholder="title"
+      />
+    </div>
+    <div class="mb-3">
+      <label>ServiceTypeNameEN</label>
+      <input type="text" class="form-control" formControlName="ServiceTypeNameEn" />
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+  
+

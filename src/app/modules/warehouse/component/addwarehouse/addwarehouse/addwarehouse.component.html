@@ -1,0 +1,57 @@
+<form [formGroup]="addWarehouse"
+      (ngSubmit)="addData()">
+
+  <div class="mb-3">
+    <label>Warehouse Name Arabic</label>
+    <input type="text"
+           formControlName="WareHouseNameAr"
+           class="form-control"
+           [class.is-valid]="addWarehouse.get('WareHouseNameAr')?.errors == null && 
+addWarehouse.get('WareHouseNameAr')?.touched">
+  </div>
+
+  <div *ngIf=" addWarehouse.get('WareHouseNameAr')?.errors != null && addWarehouse.get('WareHouseNameAr')?.touched">
+    <p class="text-danger"
+       *ngIf="addWarehouse.get('WareHouseNameAr')?.errors?.['required']">
+      Ware House Name Ar must be required
+    </p>
+  </div>
+
+
+  <div class="mb-3">
+    <label>Warehouse Name English</label>
+    <input type="text"
+           formControlName="WareHouseNameEn"
+           class="form-control"
+           [class.is-valid]="addWarehouse.get('WareHouseNameEn')?.errors == null && 
+addWarehouse.get('WareHouseNameEn')?.touched">
+  </div>
+
+  <div *ngIf=" addWarehouse.get('WareHouseNameEn')?.errors != null && addWarehouse.get('WareHouseNameEn')?.touched">
+    <p class="text-danger"
+       *ngIf="addWarehouse.get('WareHouseNameEn')?.errors?.['required']">
+      Ware House NameEn must be required
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <label>Location</label>
+    <input (focus)="openMap()"
+           type="text"
+           formControlName="Location"
+           class="form-control"
+           [class.is-valid]="addWarehouse.get('WareHouseNameEn')?.errors == null && 
+  addWarehouse.get('WareHouseNameEn')?.touched">
+  </div>
+
+  <div *ngIf=" addWarehouse.get('Location')?.errors != null && addWarehouse.get('Location')?.touched">
+    <p class="text-danger"
+       *ngIf="addWarehouse.get('Location')?.errors?.['required']">
+      Location must be required
+    </p>
+  </div>
+
+  <button type="submit"
+          class="btn btn-primary">Add </button>
+</form>
+<app-addmap (Location)="GetLocation($event)"></app-addmap>

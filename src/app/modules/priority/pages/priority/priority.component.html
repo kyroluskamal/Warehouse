@@ -1,0 +1,20 @@
+<div class="text-right mb-3">
+    <button class="btn btn-primary" (click)="openAddDialog()">Add</button>
+</div>
+
+
+<div class="table_hidden_id">
+    <app-table [tableData]="priority" [tableColumns]="columns" [tableLabels]="labels" (onEditRow)="editRow($event)"
+        (onDeleteRow)="deleteRow($event)"></app-table>
+</div>
+
+<app-dialog [width]="'30vw'" [dialogPosition]="'center'" [closable]="true"
+    [dialogHeader]="(formType=='add')?'Add priority':'Edit priority'">
+
+    <app-addpriority *ngIf="formType=='add'" (onAddPriority)="getpriority()"></app-addpriority>
+
+
+    <app-editpriority [priorityId]="selectedId" *ngIf="formType=='edit'" (onEditPriority)="getpriority()"></app-editpriority>
+
+
+</app-dialog>

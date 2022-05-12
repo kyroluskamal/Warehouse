@@ -1,0 +1,36 @@
+<form [formGroup]="editTicket" (ngSubmit)="editData()">
+
+    <div class="mb-3">
+        <label>Ticket Number</label>
+        <input type="text" formControlName="TicketNumber" class="form-control" placeholder="Ticket Number" />
+    </div>
+    <div class="form-group">
+        <label for="ccmonth">Select user</label>
+
+        <select class="form-control" (change)="selectUser($event)" formControlName='UserId'>
+
+            <option *ngFor="let user of users" [value]="user.Id">{{user.UserName}}</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>DayDate</label>
+        <input type="date" class="form-control" formControlName="DayDate" />
+    </div>
+
+    <div class="mb-3">
+        <label>Time</label>
+        <input type="number" class="form-control" formControlName="Time" />
+    </div>
+
+    <div class="form-group">
+        <label for="ccmonth">Select ticket</label>
+
+        <select class="form-control" (change)="selectTicket($event)" formControlName='TicketStatusId'>
+
+            <option *ngFor="let Tickt of Tickts" [value]="Tickt.Id">{{Tickt.StatusNameEn}}</option>
+        </select>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Add Ticket</button>
+</form>

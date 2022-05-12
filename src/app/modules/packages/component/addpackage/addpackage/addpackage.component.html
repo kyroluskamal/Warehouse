@@ -1,0 +1,47 @@
+<form [formGroup]="addPackages" (ngSubmit)="addData()">
+    <div class="mb-3">
+        <label>Packages Name Arabic</label>
+        <input type="text" formControlName="packageNameAr" class="form-control" placeholder="title" />
+    </div>
+
+    <div class="mb-3">
+        <label>Packages Name English</label>
+        <input type="text" formControlName="packageNameEn" class="form-control" placeholder="title" />
+    </div>
+
+    <div class="mb-3">
+        <label>Price</label>
+        <input type="number" formControlName="Price" class="form-control" placeholder="title" />
+    </div>
+
+    <div class="mb-3">
+        <label>Description Arabic</label>
+        <input type="text" formControlName="DescriptionAr" class="form-control" placeholder="title" />
+    </div>
+
+    <div class="mb-3">
+        <label>Description English</label>
+        <input type="text" formControlName="DescriptionEn" class="form-control" placeholder="title" />
+    </div>
+
+    <!-- <div class="form-group">
+        <label for="ccmonth">Select Description Arabic</label>
+
+        <select class="form-control" (change)="selecServicesAr($event)" formControlName='DescriptionAr'>
+
+            <option *ngFor="let servic of servicesAr" [value]="servic.Id">{{servic.DescriptionAr}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="ccmonth">Select Description English</label>
+
+        <select class="form-control" (change)="selecServicesAr($event)" formControlName='DescriptionEn'>
+
+            <option *ngFor="let servic of servicesEn" [value]="servic.Id">{{servic.DescriptionEn}}</option>
+        </select>
+    </div> -->
+
+
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>

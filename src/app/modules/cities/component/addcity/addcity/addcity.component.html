@@ -1,0 +1,24 @@
+<form [formGroup]="addCity" (ngSubmit)="addData()">
+
+  <div class="form-group">
+    <label for="ccmonth">Select Country</label>
+    <select class="form-control" (change)="selectCountry($event)" formControlName='CountryId'>
+      <option *ngIf="Countries?.length>0"> Select Country</option>
+      <option *ngIf="Countries?.length ==0"> No Data</option>
+
+      <option *ngFor="let country of Countries" [value]="country.Id">{{country.CountryNameEn}}</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label>CityNameAR</label>
+    <input type="text" formControlName="CityNameAR" class="form-control" placeholder="title" />
+  </div>
+
+  <div class="mb-3">
+    <label>CityNameEn</label>
+    <input type="text" formControlName="CityNameEn" class="form-control" placeholder="title" />
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">Add city</button>
+</form>

@@ -1,0 +1,64 @@
+<form [formGroup]="editVendor" (ngSubmit)="editData()">
+
+  <div class="mb-3">
+    <label>Vendor Name Arabic</label>
+    <input type="text" formControlName="vendorNameAr" class="form-control" placeholder="title" />
+  </div>
+      <div *ngIf=" editVendor.get('vendorNameAr')?.errors != null && editVendor.get('vendorNameAr')?.touched">
+    <p class="text-danger" *ngIf="editVendor.get('vendorNameAr')?.errors?.['required']">
+      Vendor Name Ar must be required
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <label>Vendor Name English</label>
+    <input type="text" formControlName="vendorNameEn" class="form-control" placeholder="title" />
+  </div>
+  <div *ngIf=" editVendor.get('vendorNameEn')?.errors != null && editVendor.get('vendorNameEn')?.touched">
+    <p class="text-danger" *ngIf="editVendor.get('vendorNameEn')?.errors?.['required']">
+      Vendor Name Ar must be required
+    </p>
+  </div>
+
+  <div class="mb-3">
+      <label>Phone</label>
+      <input type="text" formControlName="Phone" class="form-control" placeholder="title" />
+    </div>
+  <div *ngIf=" editVendor.get('Phone')?.errors != null && editVendor.get('Phone')?.touched">
+    <p class="text-danger" *ngIf="editVendor.get('Phone')?.errors?.['required']">
+      Phone must be required
+    </p>
+  </div>
+
+    <div class="mb-3">
+      <label>Email</label>
+      <input type="email" formControlName="Email" class="form-control" placeholder="title" />
+    </div>
+  <div *ngIf=" editVendor.get('Email')?.errors != null && editVendor.get('Email')?.touched">
+    <p class="text-danger" *ngIf="editVendor.get('Email')?.errors?.['required']">
+      Email must be required
+    </p>
+  </div>
+
+    <div class="mb-3">
+      <label>Address</label>
+      <input type="text" formControlName="Address" class="form-control" placeholder="title" />
+    </div>
+  <div *ngIf=" editVendor.get('Address')?.errors != null && editVendor.get('Address')?.touched">
+    <p class="text-danger" *ngIf="editVendor.get('Address')?.errors?.['required']">
+      Address must be required
+    </p>
+  </div>
+
+    <div class="mb-3">
+      <label>Notes</label>
+      <textarea formControlName="Notes" class="form-control" placeholder="title"></textarea>
+    </div>
+    <div *ngIf=" editVendor.get('Notes')?.errors != null && editVendor.get('Notes')?.touched">
+    <p class="text-danger" *ngIf="editVendor.get('Notes')?.errors?.['required']">
+      Ware House Name Ar must be required
+    </p>
+  </div>
+  
+    <button type="submit" class="btn btn-primary">Edit </button>
+  </form>

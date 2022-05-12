@@ -1,0 +1,17 @@
+<form [formGroup]="editTicket" (ngSubmit)="editData()">
+  <div class="mb-3">
+    <label>StatusNameAr</label>
+    <input
+      type="text"
+      formControlName="StatusNameAr"
+      class="form-control"
+      placeholder="title"
+    />
+  </div>
+  <div class="mb-3">
+    <label>StatusNameAr</label>
+    <input type="text" class="form-control" formControlName="StatusNameEn" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Edit Ticket</button>
+</form>

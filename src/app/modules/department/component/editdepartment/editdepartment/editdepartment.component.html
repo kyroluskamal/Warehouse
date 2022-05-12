@@ -1,0 +1,14 @@
+<form [formGroup]="editDepartment" (ngSubmit)="editData()">
+    <div class="mb-3">
+        <label>DeptNameAr</label>
+        <input type="text" formControlName="DeptNameAr" class="form-control" placeholder="title" />
+    </div>
+
+    <div class="mb-3">
+        <label>DeptNameEn</label>
+        <input type="text" formControlName="DeptNameEn" class="form-control" placeholder="title" />
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">edit</button>
+</form>

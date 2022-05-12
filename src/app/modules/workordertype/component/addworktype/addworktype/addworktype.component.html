@@ -1,0 +1,18 @@
+<form [formGroup]="addWorkType" (ngSubmit)="addData()">
+
+    <div class="mb-3">
+      <label>WOypeNameAr</label>
+      <input
+        type="text"
+        formControlName="WOypeNameAr"
+        class="form-control"
+        placeholder="title"
+      />
+    </div>
+    <div class="mb-3">
+      <label>WOypeNameEn</label>
+      <input type="text" class="form-control" formControlName="WOypeNameEn" />
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>

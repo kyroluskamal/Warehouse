@@ -1,0 +1,115 @@
+<form [formGroup]="addEmployee" (ngSubmit)="addData()">
+
+  <div class="form-group">
+    <label for="ccmonth">Select profession</label>
+    <select class="form-control" (change)="selectprofession($event)" formControlName='ProfessionId'>
+
+      <option *ngFor="let profession of professions" [value]="profession.Id">{{profession.ProfessionNameEn}}</option>
+    </select>
+  </div>
+  <div *ngIf=" addEmployee.get('ProfessionId')?.errors != null && addEmployee.get('ProfessionId')?.touched">
+    <p class="text-danger" *ngIf="addEmployee.get('ProfessionId')?.errors?.['required']">
+      profession must be required
+    </p>
+  </div>
+
+  <div class="form-group">
+    <label for="ccmonth">Select deapartment</label>
+    <select class="form-control" (change)="selectDepartment($event)" formControlName='DepartmentId'>
+
+      <option *ngFor="let department of departments" [value]="department.Id">{{department.DeptNameEn}}</option>
+    </select>
+  </div>
+  <div *ngIf=" addEmployee.get('DepartmentId')?.errors != null && addEmployee.get('DepartmentId')?.touched">
+    <p class="text-danger" *ngIf="addEmployee.get('DepartmentId')?.errors?.['required']">
+      deapartment must be required
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <label>Employee Name</label>
+    <input type="text" formControlName="EmpName" class="form-control">
+  </div>
+
+  <div *ngIf=" addEmployee.get('WareHouseNameAr')?.errors != null && addEmployee.get('WareHouseNameAr')?.touched">
+    <p class="text-danger" *ngIf="addEmployee.get('WareHouseNameAr')?.errors?.['required']">
+      Emp Name must be required
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <label>Employee Iqama</label>
+    <input type="text" formControlName="EmpIqama" class="form-control">
+  </div>
+
+  <div *ngIf=" addEmployee.get('WareHouseNameAr')?.errors != null && addEmployee.get('WareHouseNameAr')?.touched">
+    <p class="text-danger" *ngIf="addEmployee.get('WareHouseNameAr')?.errors?.['required']">
+      Emp Iqama must be required
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <label>Employee Date Of Birth</label>
+    <input type="date" formControlName="EmpDateOfBirth" class="form-control">
+  </div>
+
+  <div *ngIf=" addEmployee.get('EmpDateOfBirth')?.errors != null && addEmployee.get('EmpDateOfBirth')?.touched">
+    <p class="text-danger" *ngIf="addEmployee.get('EmpDateOfBirth')?.errors?.['required']">
+      Employee Date Of Birth must be required
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <label>Employee Nationality</label>
+    <input type="text" formControlName="EmpNationality" class="form-control">
+  </div>
+
+  <div *ngIf=" addEmployee.get('EmpNationality')?.errors != null && addEmployee.get('EmpNationality')?.touched">
+    <p class="text-danger" *ngIf="addEmployee.get('EmpNationality')?.errors?.['required']">
+      EmpNationality must be required
+    </p>
+  </div>
+
+  <!-- <div class="mb-3">
+    <label>Employee Sex</label>
+    <select class="form-select" aria-label="Default select example" formControlName="EmpSex" class="form-control">
+      <option>female</option>
+      <option>male</option>
+
+    </select>
+  </div> -->
+
+  <div class="mb-3">
+        <label>Employee Sex</label>
+        <input type="text" formControlName="EmpSex" class="form-control" >
+    </div>
+  <div *ngIf=" addEmployee.get('EmpSex')?.errors != null && addEmployee.get('EmpSex')?.touched">
+    <p class="text-danger" *ngIf="addEmployee.get('EmpSex')?.errors?.['required']">
+      Ware House Name Ar must be required
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <label>Employee Religion</label>
+    <input type="text" formControlName="EmpReligion" class="form-control">
+  </div>
+  <div *ngIf=" addEmployee.get('EmpReligion')?.errors != null && addEmployee.get('EmpReligion')?.touched">
+    <p class="text-danger" *ngIf="addEmployee.get('EmpReligion')?.errors?.['required']">
+      Employee Religion must be required
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <label>Employee Family State</label>
+    <input type="text" formControlName="EmpFamilyState" class="form-control" placeholder="title" />
+  </div>
+
+  <div *ngIf=" addEmployee.get('EmpFamilyState')?.errors != null && addEmployee.get('EmpFamilyState')?.touched">
+    <p class="text-danger" *ngIf="addEmployee.get('EmpFamilyState')?.errors?.['required']">
+      Employee Family State must be required
+    </p>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">Add Employee</button>
+</form>

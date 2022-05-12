@@ -1,0 +1,17 @@
+<form [formGroup]="editUnit" (ngSubmit)="editData()">
+    <div class="mb-3">
+      <label>UnitMeasureNameAr</label>
+      <input
+        type="text"
+        formControlName="UnitMeasureNameAr"
+        class="form-control"
+        placeholder="title"
+      />
+    </div>
+    <div class="mb-3">
+      <label>UnitMeasureNameEn</label>
+      <input type="text" class="form-control" formControlName="UnitMeasureNameEn" />
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Edit Ticket</button>
+  </form>

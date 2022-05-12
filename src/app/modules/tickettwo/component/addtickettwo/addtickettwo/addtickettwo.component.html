@@ -1,0 +1,74 @@
+<form [formGroup]="addTicket" (ngSubmit)="addData()">
+
+    <div class="mb-3">
+        <label>Ticket Number</label>
+        <input type="text" formControlName="TicketNumber" class="form-control" placeholder="Ticket Number" />
+    </div>
+    <div *ngIf=" addTicket.get('TicketNumber')?.errors != null && addTicket.get('TicketNumber')?.touched">
+        <p class="text-danger" *ngIf="addTicket.get('TicketNumber')?.errors?.['required']">
+            Ticket Number Ar must be required
+        </p>
+      </div>
+
+      
+      <div class="mb-3 w-100">
+        <p-dropdown [options]="users" [(ngModel)]="selectUser" optionLabel="UserName" placeholder="select user" optionValue="Id"
+         formControlName='UserId' [filter]="true" [showClear]="true" styleClass="form-control text-capitalize">
+        </p-dropdown>
+
+      </div>
+
+     
+      
+    <!-- <div class="form-group">
+        <label for="ccmonth">Select user</label>
+
+        <select class="form-control" (change)="selectUser($event)" formControlName='UserId'>
+
+            <option *ngFor="let user of users" [value]="user.Id">{{user.UserName}}</option>
+        </select>
+    </div> -->
+    <div *ngIf=" addTicket.get('UserId')?.errors != null && addTicket.get('UserId')?.touched">
+        <p class="text-danger" *ngIf="addTicket.get('UserId')?.errors?.['required']">
+            User must be required
+        </p>
+      </div>
+
+    <div class="mb-3">
+        <label>DayDate</label>
+        <input type="date" class="form-control" formControlName="DayDate" />
+    </div>
+
+    <div *ngIf=" addTicket.get('DayDate')?.errors != null && addTicket.get('DayDate')?.touched">
+        <p class="text-danger" *ngIf="addTicket.get('DayDate')?.errors?.['required']">
+            Day Date must be required
+        </p>
+      </div>
+
+    <div class="mb-3">
+        <label>Time</label>
+        <input type="date" class="form-control" formControlName="Time" />
+    </div>
+    <div *ngIf=" addTicket.get('Time')?.errors != null && addTicket.get('Time')?.touched">
+        <p class="text-danger" *ngIf="addTicket.get('Time')?.errors?.['required']">
+            Time must be required
+        </p>
+      </div>
+
+    <div class="form-group">
+        <label for="ccmonth">Select ticket</label>
+
+        <select class="form-control" (change)="selectTicket($event)" formControlName='TicketStatusId'>
+
+            <option *ngFor="let Tickt of Tickts" [value]="Tickt.Id">{{Tickt.StatusNameEn}}</option>
+        </select>
+    </div>
+    <div *ngIf=" addTicket.get('TicketStatusId')?.errors != null && addTicket.get('TicketStatusId')?.touched">
+        <p class="text-danger" *ngIf="addTicket.get('TicketStatusId')?.errors?.['required']">
+            ticket must be required
+        </p>
+      </div>
+
+
+    <button type="submit" class="btn btn-primary">Add Ticket</button>
+</form>

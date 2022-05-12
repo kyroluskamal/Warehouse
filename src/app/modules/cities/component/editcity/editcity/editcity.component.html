@@ -1,0 +1,12 @@
+<form [formGroup]="editCity" (ngSubmit)="editData()">
+    <div class="mb-3">
+        <label>CityNameAR</label>
+        <input type="text" formControlName="CityNameAR" class="form-control" placeholder="title"/>
+    </div>
+    <div class="mb-3">
+        <label>CityNameEn</label>
+        <input type="text" class="form-control" formControlName="CityNameEn" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Edit</button>
+</form>

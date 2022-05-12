@@ -1,0 +1,42 @@
+<div>
+    <div class="d-flex justify-content-center align-items-center">
+            <h1 class="text-center text-primary mb-5 border border-bottom border-primary rounded p-2 font-weight-bold rounded ">UserName : {{clientDetails?.UserName}}</h1>
+    </div>
+ <div class="d-flex alirgn-items-center justify-content-between mb-2">
+    <div class="d-flex align-items-center">
+        <p class="mr-3">ConfirmPayment: </p>
+        <button
+            type="button"
+            styleClass="p-button-sm"
+            pButton pRipple 
+            [icon]="clientDetails?.ConfirmPayment===0 ?'pi pi-times':'pi pi-bars'"
+            [label]="clientDetails?.ConfirmPayment===0 ?
+            'Denied':'Allowed'" 
+            (click)="paymentMenu.toggle($event)"
+            ></button>
+        <p-menu #paymentMenu [popup]="true" [model]="confirmPaymentItems"></p-menu>
+    </div>
+    <div class="d-flex align-items-center">
+        <p class="mr-3">IsBlock: </p>
+        <button
+        class="p-button-danger"
+            type="button"
+            styleClass="p-button-sm"
+            pButton pRipple 
+            [icon]="clientDetails?.IsBlock===false ?'pi pi-times':'pi pi-bars'"
+            [label]="clientDetails?.IsBlock===false ?
+            'False':'True'" 
+            (click)="blockMenu.toggle($event)"
+            ></button>
+        <p-menu #blockMenu [popup]="true" [model]="isBlockItems"></p-menu>
+    </div>
+ </div>
+
+    <p class="mb-2">Mobile: {{clientDetails?.Mobile}}</p>
+    <p class="mb-2">Email: {{clientDetails?.Email}}</p>
+    <p class="mb-2">CityName: {{clientDetails?.CityName}}</p>
+    <p class="mb-2">CreateDate: {{clientDetails?.CreateDate|date}}</p>
+
+
+</div>
+
