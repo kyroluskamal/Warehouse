@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, ElementRef, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
 
-import {ConfirmationService,MessageService} from "primeng/api";
+import { ConfirmationService, MessageService } from "primeng/api";
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -8,48 +9,63 @@ import {ConfirmationService,MessageService} from "primeng/api";
   providers: [ConfirmationService, MessageService]
 
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnChanges
+{
+  @ViewChild("Menu", { read: ElementRef }) Menu: ElementRef<HTMLUListElement> = {} as ElementRef<HTMLUListElement>;
+  @ViewChild("MenuTrigger", { read: ElementRef }) MenuTrigger: ElementRef<HTMLButtonElement> = {} as ElementRef<HTMLButtonElement>;
   @Input() tableData: any[] = [];
   @Input() tableColumns: any[] = [];
   @Input() tableLabels: any[] = [];
-  @Input() customButton:TemplateRef<any>
-  @Output() onEditRow = new EventEmitter()
-  @Output() onDeleteRow = new EventEmitter()
-  @Output() showRowDetails:EventEmitter<number> = new EventEmitter()
+  @Input() ShowMenuButton: boolean = false;
+  @Input() customButton: TemplateRef<any>;
+  @Output() onEditRow = new EventEmitter();
+  @Output() onDeleteRow = new EventEmitter();
+  @Output() showRowDetails: EventEmitter<number> = new EventEmitter();
   id: string = this.tableColumns[0];
-  constructor(private confirmationService: ConfirmationService,
-    private messageService: MessageService) {}
+  constructor(private confirmationService: ConfirmationService, @Inject(DOCUMENT) private document: Document,
+    private messageService: MessageService) { }
+  ngOnChanges(changes: SimpleChanges): void
+  {
+    if ("tableData" in changes)
+    {
+      this.tableData = changes.tableData.currentValue;
+    }
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
 
   }
-  editRow(id:number,event){
+  editRow(id: number, event)
+  {
     event.stopPropagation();
-    this.onEditRow.emit(id)
+    this.onEditRow.emit(id);
   }
 
-//   confirm(event: Event , id) {
-//     this.confirmationService.confirm({
-//         target: event.target,
-//         message: 'Are you sure that you want to delet?',
-//         icon: 'pi pi-exclamation-triangle',
-//         accept: () => {
-//           this.deleteRow(id)
-//         },
-//         reject: () => {
-//             //reject action
-//         }
-//     });
-// }
-  deleteRow(id:number,event){
+  //   confirm(event: Event , id) {
+  //     this.confirmationService.confirm({
+  //         target: event.target,
+  //         message: 'Are you sure that you want to delet?',
+  //         icon: 'pi pi-exclamation-triangle',
+  //         accept: () => {
+  //           this.deleteRow(id)
+  //         },
+  //         reject: () => {
+  //             //reject action
+  //         }
+  //     });
+  // }
+  deleteRow(id: number, event)
+  {
     event.stopPropagation();
-   
+
     this.confirmationService.confirm({
       target: event.target,
       message: "Are you sure that you want to delete ?",
       icon: "pi pi-exclamation-triangle",
-      accept: () => {
-        this.onDeleteRow.emit(id)
+      accept: () =>
+      {
+        this.onDeleteRow.emit(id);
         this.messageService.add({
           key: 'tc',
           severity: "error",
@@ -58,7 +74,8 @@ export class TableComponent implements OnInit {
         });
 
       },
-      reject: () => {
+      reject: () =>
+      {
         this.messageService.add({
           key: 'tc',
           severity: "info",
@@ -69,7 +86,30 @@ export class TableComponent implements OnInit {
     });
   }
 
-  public showDetails(id:number):void{
-   this.showRowDetails.emit(id)
+  public showDetails(id: number): void
+  {
+    this.showRowDetails.emit(id);
+  }
+  changeStatus(id: number)
+  {
+    this.Menu.nativeElement.style.display = "none";
+  }
+  openMenu(event: any)
+  {
+
+    this.document.body.append(this.Menu.nativeElement);
+    this.Menu.nativeElement.style.position = "absolute";
+
+    this.Menu.nativeElement.style.top = event.clientY + 25 + "px";
+    this.Menu.nativeElement.style.left = event.clientX - 100 + "px";
+
+    if (this.Menu.nativeElement.style.display === "none")
+    {
+      this.Menu.nativeElement.style.display = "block";
+    }
+    else
+    {
+      this.Menu.nativeElement.style.display = "none";
+    }
   }
 }
