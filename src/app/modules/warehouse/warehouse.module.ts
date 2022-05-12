@@ -9,6 +9,7 @@ import { AddwarehouseComponent } from './component/addwarehouse/addwarehouse/add
 import { WarehouseComponent } from './page/warehouse/warehouse.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AddmapComponent } from './component/map/addmap/addmap.component';
+import { MessageService } from 'primeng/api';
 @NgModule({
   declarations: [
 
@@ -19,7 +20,8 @@ import { AddmapComponent } from './component/map/addmap/addmap.component';
   ],
   imports: [
     CommonModule,
-    WarehouseRoutingModule,SharedModule
-  ]
+    WarehouseRoutingModule, SharedModule
+  ],
+  providers: [MessageService]
 })
 export class WarehouseModule { }

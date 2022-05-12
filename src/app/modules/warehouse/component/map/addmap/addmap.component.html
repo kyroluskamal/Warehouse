@@ -1,1 +1,19 @@
-<p-gmap [options]="options" [style]="{'width':'100%','height':'320px'}" ></p-gmap>
+<p-dialog position="top"
+          header="Choose location"
+          [(visible)]="MapToggle"
+          [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+          [style]="{ width: '70vw' }"
+          [rtl]="true"
+          [draggable]="false"
+          [resizable]="false"
+          [modal]="true"
+          [closable]="true"
+          (onHide)="map=false;MapToggle=false">
+
+    <p-gmap [options]="options"
+            [style]="{'width':'100%','height':'320px'}"
+            (onMapClick)="OnMapClick($event)"></p-gmap>
+    <button type="submit"
+            class="btn btn-primary"
+            (click)="sendLocation()">Choose location </button>
+</p-dialog>

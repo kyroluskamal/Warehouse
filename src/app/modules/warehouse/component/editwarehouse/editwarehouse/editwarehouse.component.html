@@ -1,13 +1,18 @@
-<form [formGroup]="editWarehouse" (ngSubmit)="editData()">
+<form [formGroup]="editWarehouse"
+      (ngSubmit)="editData()">
 
   <div class="mb-3">
     <label>Warehouse Name Arabic</label>
-    <input type="text" formControlName="WareHouseNameAr" class="form-control" [class.is-valid]="editWarehouse.get('WareHouseNameAr')?.errors == null && 
+    <input type="text"
+           formControlName="WareHouseNameAr"
+           class="form-control"
+           [class.is-valid]="editWarehouse.get('WareHouseNameAr')?.errors == null && 
     editWarehouse.get('WareHouseNameAr')?.touched">
   </div>
 
   <div *ngIf=" editWarehouse.get('WareHouseNameAr')?.errors != null && editWarehouse.get('WareHouseNameAr')?.touched">
-    <p class="text-danger" *ngIf="editWarehouse.get('WareHouseNameAr')?.errors?.['required']">
+    <p class="text-danger"
+       *ngIf="editWarehouse.get('WareHouseNameAr')?.errors?.['required']">
       Ware House Name Ar must be required
     </p>
   </div>
@@ -15,28 +20,37 @@
 
   <div class="mb-3">
     <label>Warehouse Name English</label>
-    <input type="text" formControlName="WareHouseNameEn" class="form-control" [class.is-valid]="editWarehouse.get('WareHouseNameEn')?.errors == null && 
+    <input type="text"
+           formControlName="WareHouseNameEn"
+           class="form-control"
+           [class.is-valid]="editWarehouse.get('WareHouseNameEn')?.errors == null && 
     editWarehouse.get('WareHouseNameEn')?.touched">
   </div>
 
   <div *ngIf=" editWarehouse.get('WareHouseNameEn')?.errors != null && editWarehouse.get('WareHouseNameEn')?.touched">
-    <p class="text-danger" *ngIf="editWarehouse.get('WareHouseNameEn')?.errors?.['required']">
+    <p class="text-danger"
+       *ngIf="editWarehouse.get('WareHouseNameEn')?.errors?.['required']">
       Ware House NameEn must be required
     </p>
   </div>
 
   <div class="mb-3">
-      <label>Location</label>
-      <input type="text" formControlName="Location" class="form-control" [class.is-valid]="editWarehouse.get('WareHouseNameEn')?.errors == null && 
+    <label>Location</label>
+    <input type="text"
+           formControlName="Location"
+           class="form-control"
+           [class.is-valid]="editWarehouse.get('WareHouseNameEn')?.errors == null && 
       editWarehouse.get('WareHouseNameEn')?.touched">
-    </div>
+  </div>
 
-    <div *ngIf=" editWarehouse.get('Location')?.errors != null && editWarehouse.get('Location')?.touched">
-      <p class="text-danger" *ngIf="editWarehouse.get('Location')?.errors?.['required']">
-        Location must be required
-      </p>
-    </div>
-  
-    <button type="submit" class="btn btn-primary">edit </button>
-  </form>
+  <div *ngIf=" editWarehouse.get('Location')?.errors != null && editWarehouse.get('Location')?.touched">
+    <p class="text-danger"
+       *ngIf="editWarehouse.get('Location')?.errors?.['required']">
+      Location must be required
+    </p>
+  </div>
 
+  <button type="submit"
+          class="btn btn-primary">edit </button>
+</form>
+<app-addmap (Location)="GetLocation($event)"></app-addmap>

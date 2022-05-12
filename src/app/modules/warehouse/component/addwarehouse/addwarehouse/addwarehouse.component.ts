@@ -7,28 +7,38 @@ import { DialogService } from 'src/app/shared/services/dialog/dialog.service';
   templateUrl: './addwarehouse.component.html',
   styleUrls: ['./addwarehouse.component.scss']
 })
-export class AddwarehouseComponent implements OnInit {
-  addWarehouse:FormGroup;
-  @Output() onaddWrehouse = new EventEmitter()
-  constructor(private DialogService:DialogService, private WarehouseService:WarehouseService) { }
+export class AddwarehouseComponent implements OnInit
+{
+  addWarehouse: FormGroup;
+  @Output() onaddWrehouse = new EventEmitter();
+  constructor(private DialogService: DialogService, private WarehouseService: WarehouseService) { }
+  ngOnInit(): void
+  {
 
-  ngOnInit(): void {
+    /*add form*/
+    this.addWarehouse = new FormGroup({
+      WareHouseNameAr: new FormControl(null, [Validators.required]),
+      WareHouseNameEn: new FormControl(null, [Validators.required]),
+      Location: new FormControl(null, [Validators.required]),
+    });
+  }
 
-        /*add form*/
-this.addWarehouse = new FormGroup({
-  WareHouseNameAr: new FormControl(null, [Validators.required]),
-  WareHouseNameEn: new FormControl(null, [Validators.required]),
-  Location: new FormControl(null, [Validators.required]),
-});
-}
-
-addData() {
-  this.WarehouseService.addWarehouse(this.addWarehouse.value).subscribe((data) => {
-    this.addWarehouse.reset();
-    console.log(data)
-    this.DialogService.toggleDisplayDialog(false)
-    this.onaddWrehouse.emit()
-  });
-}
-
+  addData()
+  {
+    this.WarehouseService.addWarehouse(this.addWarehouse.value).subscribe((data) =>
+    {
+      this.addWarehouse.reset();
+      console.log(data);
+      this.DialogService.toggleDisplayDialog(false);
+      this.onaddWrehouse.emit();
+    });
+  }
+  openMap()
+  {
+    this.DialogService.toggleMap(true);
+  }
+  GetLocation(event: any)
+  {
+    console.log(event);
+  }
 }
