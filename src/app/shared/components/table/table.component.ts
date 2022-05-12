@@ -102,16 +102,23 @@ export class TableComponent implements OnInit, OnChanges
     this.document.body.append(this.Menu.nativeElement);
     this.Menu.nativeElement.style.position = "absolute";
 
-    this.Menu.nativeElement.style.top = event.clientY + 25 + "px";
-    this.Menu.nativeElement.style.left = event.clientX - 100 + "px";
-
     if (this.Menu.nativeElement.style.display === "none")
     {
       this.Menu.nativeElement.style.display = "block";
+      this.Menu.nativeElement.style.top = event.clientY + 25 + "px";
+      this.Menu.nativeElement.style.left = event.clientX - 100 + "px";
     }
     else
     {
-      this.Menu.nativeElement.style.display = "none";
+      debugger;
+      if (event.clientY < this.Menu.nativeElement.offsetTop - 50)
+      {
+        this.Menu.nativeElement.style.top = event.clientY + 25 + "px";
+        this.Menu.nativeElement.style.left = event.clientX - 100 + "px";
+        this.Menu.nativeElement.style.display = "none";
+        this.Menu.nativeElement.style.display = "block";
+      } else
+        this.Menu.nativeElement.style.display = "none";
     }
   }
 }
