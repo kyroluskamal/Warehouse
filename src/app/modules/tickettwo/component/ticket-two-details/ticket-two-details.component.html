@@ -1,0 +1,97 @@
+<div class="d-flex flex-row justify-content-between flex-wrap">
+    <div style="width:49%">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="d-flex flex-row align-items-center">
+                <img *ngIf="!selectedUser.PhotoUrl"
+                     class="img-fluid mb-3 mr-2 userAvatar"
+                     src="../../../../../assets/img/user.png"
+                     alt="user image placeholder">
+                <img *ngIf="selectedUser.PhotoUrl"
+                     cclass="img-fluid mb-3 mr-2 userAvatar"
+                     [src]="selectedUser.PhotoUrl"
+                     alt="">
+                <h1
+                    class="text-center text-primary mb-3 border border-bottom border-primary rounded p-2 font-weight-bold rounded ">
+                    UserName : {{selectedUser.UserName | titlecase}}</h1>
+            </div>
+        </div>
+        <div class="px-2">
+
+            <p class="d-flex flex-row">
+                <span class="w-30 d-block"
+                      style="font-weight: bold;">Email</span>
+                <span class="px-2"
+                      style="font-weight: bold;">:</span>
+                {{selectedUser.Email}}
+            </p>
+            <p class="d-flex flex-row">
+                <span class="w-30 d-block"
+                      style="font-weight: bold;">Mobile</span>
+                <span class="px-2"
+                      style="font-weight: bold;">:</span>
+                {{selectedUser.Mobile}}
+            </p>
+            <p class="d-flex flex-row">
+                <span class="w-30 d-block"
+                      style="font-weight: bold;">City Name</span>
+                <span class="px-2"
+                      style="font-weight: bold;">:</span>
+                {{selectedUser.CityName}}
+            </p>
+            <p class="d-flex flex-row">
+                <span class="w-30 d-block"
+                      style="font-weight: bold;">Created at</span>
+                <span class="px-2"
+                      style="font-weight: bold;">:</span>
+                {{selectedUser.CreateDate|date}}
+            </p>
+            <p class="d-flex flex-row">
+                <span class="w-30 d-block"
+                      style="font-weight: bold;">Status</span>
+                <span class="px-2"
+                      style="font-weight: bold;">:</span>
+                <span class="badge bg-danger"
+                      *ngIf="selectedUser.IsBlock">
+                    <i class="pi pi-times small"></i>
+                    Blocked
+                </span>
+                <span class="badge bg-success"
+                      *ngIf="!selectedUser.IsBlock">
+                    <i class="pi pi-check small"></i>
+                    Valid
+                </span>
+            </p>
+        </div>
+    </div>
+    <div style="width:49%"
+         class="d-flex flex-column">
+        <div class="d-flex justify-content-center align-items-center">
+            <h1
+                class="text-center text-primary mb-3 border border-bottom border-primary rounded p-2 font-weight-bold rounded ">
+                Ticket No. : #{{selectedTicket.TicketNumber}} </h1>
+        </div>
+        <div class="px-2 d-flex justify-content-center flex-column">
+            <p class="d-flex flex-row">
+                <span class="w-30 d-block"
+                      style="font-weight: bold;">Stauts</span>
+                <span class="px-2"
+                      style="font-weight: bold;">:</span>
+                {{selectedTicketStatus.StatusNameEn}}
+            </p>
+            <p class="d-flex flex-row">
+                <span class="w-30 d-block"
+                      style="font-weight: bold;">Date</span>
+                <span class="px-2"
+                      style="font-weight: bold;">:</span>
+                {{selectedTicket.DayDate |date}}
+            </p>
+            <p class="d-flex flex-row">
+                <span class="w-30 d-block"
+                      style="font-weight: bold;">Time</span>
+                <span class="px-2"
+                      style="font-weight: bold;">:</span>
+                {{selectedTicket.Time |date:'shortTime'}}
+            </p>
+        </div>
+    </div>
+</div>
