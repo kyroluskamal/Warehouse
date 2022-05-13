@@ -61,8 +61,8 @@ export class EditwarehouseComponent implements OnInit
   {
     this.DialogService.toggleMap(true);
   }
-  GetLocation($event)
+  GetLocation(event)
   {
-    console.log($event);
+    this.editWarehouse.get("Location").setValue(event.latLng.lat() + " , " + event.latLng.lng());
   }
 }

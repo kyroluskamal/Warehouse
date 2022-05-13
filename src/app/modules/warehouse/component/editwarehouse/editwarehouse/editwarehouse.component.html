@@ -37,6 +37,8 @@
   <div class="mb-3">
     <label>Location</label>
     <input type="text"
+           (focus)="EditMap.hidden=false"
+           (blur)="EditMap.hidden=true"
            formControlName="Location"
            class="form-control"
            [class.is-valid]="editWarehouse.get('WareHouseNameEn')?.errors == null && 
@@ -49,7 +51,13 @@
       Location must be required
     </p>
   </div>
-
+  <div [hidden]="true"
+       #EditMap>
+    <app-addmap (Location)="GetLocation($event)"></app-addmap>
+    <button type="button"
+            (click)="EditMap.hidden=true"
+            class="btn btn-danger">Close map </button>
+  </div>
   <button type="submit"
           class="btn btn-primary">edit </button>
 </form>

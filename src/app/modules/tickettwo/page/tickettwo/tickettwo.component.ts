@@ -56,6 +56,7 @@ export class TickettwoComponent implements OnInit
         }
       }
       this.tickets = this.arr;
+      console.log(this.tickets);
     });
 
   }
@@ -107,7 +108,6 @@ export class TickettwoComponent implements OnInit
   {
     this.TicketService.getTickets().subscribe((result: any) =>
     {
-      console.log(result);
       this.Ticket = result.TicketStatuses;
       this.getTicket();
     });
@@ -121,5 +121,11 @@ export class TickettwoComponent implements OnInit
   ChangeStatus(rowId: number)
   {
     console.log(rowId);
+  }
+  public onShowRowDetails(clientId: number): void
+  {
+    this.selectedId = clientId;
+    this.formType = 'showDetails';
+    this.DialogService.toggleDisplayDialog(true);
   }
 }

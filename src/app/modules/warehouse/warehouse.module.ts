@@ -16,7 +16,8 @@ import { MessageService } from 'primeng/api';
     EditwarehouseComponent,
     AddwarehouseComponent,
     WarehouseComponent,
-    AddmapComponent
+    AddmapComponent,
+
   ],
   imports: [
     CommonModule,

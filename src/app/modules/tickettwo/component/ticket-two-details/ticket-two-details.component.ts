@@ -4,7 +4,7 @@ import { ClientService } from 'src/app/shared/services/client/client.service';
 @Component({
   selector: 'app-ticketTwoDetails',
   templateUrl: './ticket-two-details.component.html',
-  styleUrls: ['./ticket-two-details.component.scss']
+  styleUrls: ['./ticket-two-details.component.scss'],
 })
 export class TicketTwoDetailsComponent implements OnInit
 {

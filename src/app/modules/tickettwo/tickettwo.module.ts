@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TickettwoRoutingModule } from './tickettwo-routing.module';
 import { AddtickettwoComponent } from './component/addtickettwo/addtickettwo/addtickettwo.component';
 import { EdittickettwoComponent } from './component/edit tickettwo/edittickettwo/edittickettwo.component';
+import { TicketTwoDetailsComponent } from './component/ticket-two-details/ticket-two-details.component';
 import { TickettwoComponent } from './page/tickettwo/tickettwo.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
@@ -11,11 +12,11 @@ import { SharedModule } from 'src/app/shared/shared.module';
   declarations: [
     AddtickettwoComponent,
     EdittickettwoComponent,
-    TickettwoComponent
+    TickettwoComponent, TicketTwoDetailsComponent
   ],
   imports: [
     CommonModule,
-    TickettwoRoutingModule,SharedModule,
+    TickettwoRoutingModule, SharedModule,
   ]
 })
 export class TickettwoModule { }

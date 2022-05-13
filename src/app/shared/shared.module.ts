@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -24,13 +24,18 @@ import { ServicetypeService } from './services/servicetype/servicetype.service';
 import { PurchasesorderComponent } from './services/purchases order/purchasesorder/purchasesorder.component';
 import { ProfessionService } from './services/profession/profession.service';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb/breadcrumb.component';
-import{BreadcrumbModule} from 'xng-breadcrumb'
+import { BreadcrumbModule } from 'xng-breadcrumb';
+import { UserTypePipe } from '../Pipes/user-type.pipe';
+import { ConfirmPaymentPipe } from '../Pipes/confirm-payment.pipe';
+import { GoogleMapsModule } from '@angular/google-maps';
 @NgModule({
   declarations: [
     TableComponent,
     DialogComponent,
     PurchasesorderComponent,
     BreadcrumbComponent,
+    UserTypePipe,
+    ConfirmPaymentPipe
   ],
   imports: [
     CommonModule,
@@ -39,7 +44,8 @@ import{BreadcrumbModule} from 'xng-breadcrumb'
     ReactiveFormsModule,
     HttpClientModule,
     PrimengModule,
-    AngularmaterialModule,BreadcrumbModule
+    GoogleMapsModule,
+    AngularmaterialModule, BreadcrumbModule,
   ],
   providers: [
     AuthService,
@@ -52,7 +58,8 @@ import{BreadcrumbModule} from 'xng-breadcrumb'
     ServicepriceService,
     WorkordertypeService,
     UnitService,
-    ServicetypeService,ProfessionService
+    DatePipe,
+    ServicetypeService, ProfessionService,
     ,
     {
       provide: HTTP_INTERCEPTORS,
@@ -60,6 +67,8 @@ import{BreadcrumbModule} from 'xng-breadcrumb'
       multi: true,
     },
   ],
-  exports: [FormsModule, ReactiveFormsModule, HttpClientModule,PrimengModule,TableComponent,DialogComponent,BreadcrumbModule],
+  exports: [FormsModule, ReactiveFormsModule, HttpClientModule,
+    PrimengModule, ConfirmPaymentPipe, GoogleMapsModule,
+    UserTypePipe, TableComponent, DialogComponent, BreadcrumbModule],
 })
-export class SharedModule {}
+export class SharedModule { }

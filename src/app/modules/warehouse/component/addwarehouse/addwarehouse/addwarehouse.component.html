@@ -36,7 +36,7 @@ addWarehouse.get('WareHouseNameEn')?.touched">
 
   <div class="mb-3">
     <label>Location</label>
-    <input (focus)="openMap()"
+    <input (focus)="Addmap.hidden=false"
            type="text"
            formControlName="Location"
            class="form-control"
@@ -50,8 +50,13 @@ addWarehouse.get('WareHouseNameEn')?.touched">
       Location must be required
     </p>
   </div>
-
+  <div [hidden]="true"
+       #Addmap>
+    <app-addmap (Location)="GetLocation($event)"></app-addmap>
+    <button type="button"
+            (click)="Addmap.hidden=true"
+            class="btn btn-danger my-2">Close map </button>
+  </div>
   <button type="submit"
           class="btn btn-primary">Add </button>
 </form>
-<app-addmap (Location)="GetLocation($event)"></app-addmap>

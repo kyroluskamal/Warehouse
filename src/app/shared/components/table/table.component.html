@@ -55,11 +55,12 @@
 
   <ng-template pTemplate="body"
                let-data>
-    <tr [pSelectableRow]="data"
-        (click)="showDetails(data?.Id)">
+    <tr [pSelectableRow]="data">
 
 
       <td class="text-center"
+          (click)="showDetails(data?.Id)"
+          style="    padding: 1rem 0;"
           *ngFor="let columnName of tableColumns">
 
         <!-- <ng-container *ngIf="columnName=='CountryId';else default;">
@@ -75,15 +76,22 @@
           <span> {{ data[columnName] }}</span>
         </ng-template>
          -->
-        <span *ngIf="columnName.includes('Time')">
-
-          {{ data[columnName]|date:'shortTime' }}
+        <span [ngSwitch]="true">
+          <span *ngSwitchCase="columnName.includes('Time')">{{ data[columnName] | date:'shortTime' }}</span>
+          <span *ngSwitchCase="columnName.includes('Date')">{{ data[columnName] | date }}</span>
+          <span *ngSwitchDefault> {{ data[columnName] }}</span>
         </span>
+        <!-- <ng-template *ngIf="columnName.includes('Date'); else time">
+          {{ data[columnName] | date:"date" }}
+        </ng-template>
+        <ng-temlate #time>
+          <span *ngIf="columnName.includes('Time'); else noPipe">
+            {{ data[columnName] | date:'shortTime' }}
+          </span>
+        </ng-temlate>
+        <ng-template #noPipe>
 
-        <span *ngIf="!columnName.includes('date')">
-
-          {{ data[columnName] }}
-        </span>
+        </ng-template> -->
 
       </td>
 
@@ -102,7 +110,7 @@
         <p-toast position="top-center"
                  key="tc"></p-toast>
         <p-confirmPopup></p-confirmPopup>
-        <button pButton
+        <!-- <button pButton
                 pRipple
                 type="button"
                 icon="pi pi-pencil"
@@ -113,22 +121,31 @@
                 type="button"
                 icon="pi pi-trash"
                 class="p-button-rounded p-button-text p-button-plain p-button-danger"
-                (click)="deleteRow(data[tableColumns[0]],$event) "></button>
-        <button (click)="openMenu($event)"
-                #MenuTrigger
-                pButton
-                pRipple
-                type="button"
-                class="p-button-rounded p-button-text p-button-plain p-button-secondary"><i
-             class="fa-solid fa-ellipsis-vertical"></i>
-          <ul #Menu
-              id="Menu"
-              style="display:none">
-            <li (click)="changeStatus(data?.Id)">Change Status</li>
-            <li>Cancel</li>
-            <li>Delete</li>
-          </ul>
-        </button>
+                (click)="deleteRow(data[tableColumns[0]],$event) "></button> -->
+        <div>
+          <button (click)="openMenu($event)"
+                  #MenuTrigger
+                  pButton
+                  pRipple
+                  type="button"
+                  class="p-button-rounded p-button-text p-button-plain p-button-info"><i
+               class="fa-solid fa-ellipsis-vertical"></i>
+            <ul #Menu
+                id="Menu"
+                style="display:none">
+              <li (click)="changeStatus(data?.Id)"
+                  *ngIf="customMenuItems">
+                <i class="pi pi-pencil"
+                   style="color:#00000000"></i><span style="margin-left: 0.8rem;">Change Status</span>
+              </li>
+              <li (click)="editRow(data[tableColumns[0]],$event)"><i class="pi pi-pencil"></i><span
+                      style="margin-left: 0.8rem;">Edit</span></li>
+              <li (click)="deleteRow(data[tableColumns[0]],$event)"><i class="pi pi-trash"></i><span
+                      style="margin-left: 0.8rem;">Delete</span>
+              </li>
+            </ul>
+          </button>
+        </div>
         <ng-container *ngTemplateOutlet="customButton"></ng-container>
       </td>
     </tr>

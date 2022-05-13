@@ -16,7 +16,7 @@ export class TableComponent implements OnInit, OnChanges
   @Input() tableData: any[] = [];
   @Input() tableColumns: any[] = [];
   @Input() tableLabels: any[] = [];
-  @Input() ShowMenuButton: boolean = false;
+  @Input() customMenuItems: boolean = false;
   @Input() customButton: TemplateRef<any>;
   @Output() onEditRow = new EventEmitter();
   @Output() onDeleteRow = new EventEmitter();
@@ -106,7 +106,7 @@ export class TableComponent implements OnInit, OnChanges
     {
       this.Menu.nativeElement.style.display = "block";
       this.Menu.nativeElement.style.top = event.clientY + 25 + "px";
-      this.Menu.nativeElement.style.left = event.clientX - 100 + "px";
+      this.Menu.nativeElement.style.left = event.clientX - 150 + "px";
     }
     else
     {
@@ -114,7 +114,7 @@ export class TableComponent implements OnInit, OnChanges
       if (event.clientY < this.Menu.nativeElement.offsetTop - 50)
       {
         this.Menu.nativeElement.style.top = event.clientY + 25 + "px";
-        this.Menu.nativeElement.style.left = event.clientX - 100 + "px";
+        this.Menu.nativeElement.style.left = event.clientX - 150 + "px";
         this.Menu.nativeElement.style.display = "none";
         this.Menu.nativeElement.style.display = "block";
       } else

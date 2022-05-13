@@ -9,7 +9,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
 import { AuthGuardService } from "./shared/services/auth-guard/auth-guard.service";
-import{AuthModule} from'./modules/auth/auth.module'
+import { AuthModule } from './modules/auth/auth.module';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -28,7 +28,8 @@ const APP_CONTAINERS = [
   DefaultLayoutComponent
 ];
 
-import {
+import
+{
   AppAsideModule,
   AppBreadcrumbModule,
   AppHeaderModule,
@@ -62,9 +63,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ChartsModule,
     IconModule,
     IconSetModule.forRoot(),
-SharedModule,
-AuthModule,
-NgbModule
+    SharedModule,
+    AuthModule,
+    NgbModule,
   ],
   declarations: [
     AppComponent,
@@ -74,6 +75,6 @@ NgbModule
     AuthGuardService,
     IconSetService,
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

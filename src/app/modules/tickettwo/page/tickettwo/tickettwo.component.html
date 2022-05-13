@@ -13,12 +13,15 @@
   <app-table [tableData]="tickets"
              [tableColumns]="columns"
              [tableLabels]="labels"
+             [customMenuItems]="true"
              (onEditRow)="editRow($event)"
              (onDeleteRow)="deleteRow($event)"
-             (ChangeStatusClicked)="ChangeStatus($event)">
+             (ChangeStatusClicked)="ChangeStatus($event)"
+             (showRowDetails)="onShowRowDetails($event)">
   </app-table>
 </div>
 <app-dialog [width]="'30vw'"
+            *ngIf="formType!='showDetails'"
             [dialogPosition]="'center'"
             [closable]="true"
             [dialogHeader]="(formType=='add')?'Add Ticket':'Edit Ticket'">
@@ -28,4 +31,13 @@
   <app-edittickettwo [ticketId]="selectedId"
                      *ngIf="formType=='edit'"
                      (onEditTicket)="getTicket()"></app-edittickettwo>
+  <!-- <app-ticketTwoDetails *ngIf="formType=='showDetails'"></app-ticketTwoDetails> -->
+</app-dialog>
+<app-dialog [width]="'60vw'"
+            *ngIf="formType=='showDetails'"
+            [dialogPosition]="'center'"
+            [closable]="true"
+            [dialogHeader]="'Ticket details'">
+  <app-ticketTwoDetails *ngIf="formType=='showDetails'"
+                        [ticketId]="selectedId"></app-ticketTwoDetails>
 </app-dialog>

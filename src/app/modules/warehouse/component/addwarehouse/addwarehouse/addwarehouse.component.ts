@@ -37,8 +37,9 @@ export class AddwarehouseComponent implements OnInit
   {
     this.DialogService.toggleMap(true);
   }
-  GetLocation(event: any)
+  GetLocation(event: google.maps.MapMouseEvent)
   {
-    console.log(event);
+    console.log(event.domEvent.bubbles);
+    this.addWarehouse.get("Location").setValue(event.latLng.lat() + " , " + event.latLng.lng());
   }
 }
